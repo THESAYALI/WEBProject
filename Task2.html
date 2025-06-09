@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Responsive Animated UI with Video</title>
+<style>
+  :root {
+    --primary-color: #3f51b5;
+    --secondary-color: #f0f2f5;
+    --dark-color: #212121;
+    --light-color: #fff;
+    --accent-color: #ff4081;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --transition-speed: 0.4s;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+ body {
+    margin: 0;
+    font-family: var(--font-family);
+    background-color: var(--secondary-color);
+    color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+  }
+ @keyframes slideInLeft {
+    from {opacity: 0; transform: translateX(-50px);}
+    to {opacity: 1; transform: translateX(0);}
+  }
+ @keyframes slideInRight {
+    from {opacity: 0; transform: translateX(50px);}
+    to {opacity: 1; transform: translateX(0);}
+  }
+
+  @keyframes pulseScale {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+  }
+
+  header {
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    color: var(--light-color);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    animation: fadeIn 1s ease forwards;
+  }
+
+  header .logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+  }
+
+  nav {
+    display: flex;
+    gap: 1.8rem;
+  }
+
+  nav a {
+    color: var(--light-color);
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 3px;
+    transition: color var(--transition-speed);
+  }
+
+  nav a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color);
+    left: 0;
+    bottom: 0;
+    transition: width var(--transition-speed);
+  }
+
+  nav a:hover, nav a:focus {
+    color: var(--accent-color);
+  }
+
+  nav a:hover::after,
+  nav a:focus::after {
+    width: 100%;
+  }
+
+  main {
+    flex: 1;
+    padding: 2rem;
+    max-width: 960px;
+    margin: 2rem auto;
+    background-color: var(--light-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    animation: fadeIn 1.5s ease forwards;
+  }
+
+  main h1 {
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 0;
+    animation: slideInLeft 1s ease forwards;
+  }
+
+  main p {
+    line-height: 1.7;
+    font-size: 1.15rem;
+    animation: slideInRight 1s ease forwards;
+    animation-delay: 0.3s;
+    animation-fill-mode: backwards;
+  }
+
+  .video-container {
+    margin-top: 2.5rem;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    animation: pulseScale 3s ease-in-out infinite;
+    max-width: 100%;
+  }
+
+  .video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+  }
+
+  footer {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    padding: 1rem 2rem;
+    text-align: center;
+    font-size: 0.9rem;
+    user-select: none;
+    transition: background-color 0.5s ease;
+    animation: fadeIn 2s ease forwards;
+  }
+
+  footer:hover {
+    background-color: var(--primary-color);
+    cursor: default;
+  }
+
+  @media (max-width: 768px) {
+    header {
+      justify-content: center;
+      text-align: center;
+    }
+
+    nav {
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.85rem;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    main {
+      margin: 1rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    main h1,
+    main p {
+      animation: none; 
+    }
+
+    .video-container {
+      animation: none; 
+    }
+  }
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo" tabindex="0">MyApp</div>
+  <nav role="navigation" aria-label="Main Menu">
+    <a href="#home" tabindex="0">Home</a>
+    <a href="#features" tabindex="0">Features</a>
+    <a href="#about" tabindex="0">About</a>
+    <a href="#contact" tabindex="0">Contact</a>
+  </nav>
+</header>
+
+<main role="main" tabindex="0">
+  <h1>Welcome to The Power App</h1>
+  <p>
+    This is the main content area of the app. It adjusts smoothly on all devices, with engaging animated text to enhance the user experience.
+  </p>
+  <p>
+    Life is an incredible journey filled with discovery and wonder. Across the universe, countless mysteries await our curiosity and exploration.
+  </p>
+
+  <div class="video-container" aria-label="Video animation demonstration">
+    <video autoplay muted loop playsinline controls>
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+      <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</main>
+<footer role="contentinfo">
+contact no:0220-8826
+Address:Shri Park
+Email:abc@gmail.com
+</footer>
+</body>
+</html>
