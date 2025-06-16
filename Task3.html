@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unique Grid Layout Template</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+  :root {
+    --grid-gap: 24px;
+    --card-radius: 24px;
+    --card-bg-gradient-start: #8e2de2;
+    --card-bg-gradient-end: #4a00e0;
+    --card-hover-gradient-start: #6a11cb;
+    --card-hover-gradient-end: #2575fc;
+    --text-color: #ffffff;
+    --shadow-normal: rgba(138, 43, 226, 0.4);
+    --shadow-hover: rgba(37, 99, 235, 0.6);
+  }
+
+  body {
+    margin: 0;
+    background: #121212;
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 48px 24px;
+  }
+
+  .container {
+    max-width: 1200px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--grid-gap);
+    margin-top: 24px;
+  }
+
+  .card {
+    background: linear-gradient(135deg, var(--card-bg-gradient-start), var(--card-bg-gradient-end));
+    border-radius: var(--card-radius);
+    padding: 32px 24px;
+    box-shadow: 0 10px 30px var(--shadow-normal);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.35s, background 0.35s, box-shadow 0.35s;
+    user-select: none;
+  }
+
+  .card:hover, .card:focus {
+    background: linear-gradient(135deg, var(--card-hover-gradient-start), var(--card-hover-gradient-end));
+    box-shadow: 0 20px 50px var(--shadow-hover);
+    transform: translateY(-12px) scale(1.05);
+    outline: none;
+  }
+
+  .button-container {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    background: #e59be8;
+    color: var(--text-color);
+  }
+
+  button:hover {
+    background: var(--card-hover-gradient-start);
+  }
+
+</style>
+</head>
+<body>
+
+<h1>Choose the Layout</h1>
+<div class="button-container">
+    <button onclick="setLayout('grid')">Grid Layout</button>
+    <button onclick="setLayout('column')">Column Layout</button>
+    <button onclick="setLayout('card')">Card Layout</button>
+</div>
+
+<main class="container" id="layout-container">
+    <div class="card">Item 1</div>
+    <div class="card">Item 2</div>
+    <div class="card">Item 3</div>
+    <div class="card">Item 4</div>
+    <div class="card">Item 5</div>
+    <div class="card">Item 6</div>
+    <div class="card">Item 7</div>
+</main>
+
+<script>
+  function setLayout(type) {
+    const container = document.getElementById('layout-container');
+
+    if (type === 'grid') {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = 'repeat(auto-fit, minmax(220px, 1fr))';
+    } else if (type === 'column') {
+      container.style.display = 'flex';
+      container.style.flexDirection = 'column';
+    } else if (type === 'card') {
+      container.style.display = 'grid';
+      container.style.gridTemplateColumns = 'repeat(3, 1fr)';
+    }
+  }
+</script>
+</body>
+</html>
