@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Digital Task Manager</title>
+
+<style>
+
+body{
+font-family:Segoe UI;
+background:linear-gradient(135deg,#667eea,#764ba2);
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:#333;
+}
+
+.container{
+background:white;
+width:500px;
+padding:25px;
+border-radius:12px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
+}
+
+h1{
+text-align:center;
+color:#5a4fcf;
+}
+
+input,select,button{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:6px;
+border:1px solid #ccc;
+font-size:14px;
+}
+
+button{
+background:#5a4fcf;
+color:white;
+border:none;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#4638b6;
+}
+
+.task{
+background:#f4f4ff;
+padding:12px;
+margin-top:10px;
+border-radius:8px;
+display:flex;
+flex-direction:column;
+}
+
+.task-header{
+display:flex;
+justify-content:space-between;
+font-weight:bold;
+}
+
+.priority-high{color:red}
+.priority-medium{color:orange}
+.priority-low{color:green}
+
+.controls{
+margin-top:8px;
+}
+
+.controls button{
+width:auto;
+padding:6px 10px;
+margin-right:5px;
+font-size:12px;
+}
+
+.completed{
+text-decoration:line-through;
+opacity:0.6;
+}
+
+.timer{
+font-size:12px;
+margin-top:5px;
+color:#555;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Task Manager</h1>
+
+<input id="taskTitle" placeholder="Task title">
+
+<select id="priority">
+<option value="low">Low Priority</option>
+<option value="medium">Medium Priority</option>
+<option value="high">High Priority</option>
+</select>
+
+<input type="datetime-local" id="deadline">
+
+<button onclick="addTask()">Add Task</button>
+
+<div id="taskList"></div>
+
+</div>
+
+<audio id="alarm">
+<source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg">
+</audio>
+
+<script>
+
+let tasks=[]
+
+function addTask(){
+
+let title=document.getElementById("taskTitle").value
+let priority=document.getElementById("priority").value
+let deadline=document.getElementById("deadline").value
+
+if(title==""||deadline==""){
+alert("Please enter task and deadline")
+return
+}
+
+let task={
+title:title,
+priority:priority,
+deadline:new Date(deadline),
+completed:false
+}
+
+tasks.push(task)
+
+document.getElementById("taskTitle").value=""
+
+renderTasks()
+}
+
+function renderTasks(){
+
+let list=document.getElementById("taskList")
+list.innerHTML=""
+
+tasks.forEach((task,index)=>{
+
+let div=document.createElement("div")
+div.className="task"
+
+if(task.completed) div.classList.add("completed")
+
+div.innerHTML=`
+
+<div class="task-header">
+<span>${task.title}</span>
+<span class="priority-${task.priority}">
+${task.priority.toUpperCase()}
+</span>
+</div>
+
+<div class="timer" id="timer-${index}"></div>
+
+<div class="controls">
+<button onclick="completeTask(${index})">✔ Done</button>
+<button onclick="deleteTask(${index})">✖ Delete</button>
+</div>
+
+`
+
+list.appendChild(div)
+
+})
+
+}
+
+function completeTask(i){
+tasks[i].completed=true
+renderTasks()
+}
+
+function deleteTask(i){
+tasks.splice(i,1)
+renderTasks()
+}
+
+setInterval(()=>{
+
+tasks.forEach((task,index)=>{
+
+let timer=document.getElementById("timer-"+index)
+if(!timer) return
+
+let now=new Date()
+let diff=task.deadline-now
+
+if(diff<=0 && !task.completed){
+
+timer.innerHTML="⚠ Deadline reached!"
+document.getElementById("alarm").play()
+
+}else{
+
+let hours=Math.floor(diff/3600000)
+let minutes=Math.floor((diff%3600000)/60000)
+let seconds=Math.floor((diff%60000)/1000)
+
+timer.innerHTML="⏳ Time left: "+hours+"h "+minutes+"m "+seconds+"s"
+
+}
+
+})
+
+},1000)
+
+</script>
+
+</body>
+</html>

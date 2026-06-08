@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S.T.O.P. | Emergency Response Hub</title>
+    <style>
+        :root { --primary: #CCFF00; --bg: #0d0d0d; --card: #1a1a1a; --fire: #ff4b2b; --police: #2b5eff; --medical: #00e676; }
+        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; padding: 30px; }
+        .header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #333; padding-bottom: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 30px; }
+        
+        .agency-card { background: var(--card); border-radius: 12px; padding: 25px; border-top: 8px solid #444; position: relative; }
+        .fire { border-color: var(--fire); }
+        .police { border-color: var(--police); }
+        .medical { border-color: var(--medical); }
+
+        .status-light { height: 12px; width: 12px; border-radius: 50%; display: inline-block; margin-right: 10px; background: #555; }
+        .active-pulse { background: #ff0000; animation: pulse 1s infinite; }
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+
+        .btn-call { width: 100%; padding: 12px; margin-top: 15px; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
+        .btn-fire { background: var(--fire); color: white; }
+        .btn-police { background: var(--police); color: white; }
+        .btn-medical { background: var(--medical); color: black; }
+        
+        .incident-brief { background: #000; padding: 15px; border-radius: 8px; margin-bottom: 20px; border-left: 4px solid var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚨 Emergency Dispatch Interface</h1>
+        <button onclick="window.location.href='dashboard.html'" style="background:none; color:var(--primary); border:1px solid var(--primary); padding:10px; cursor:pointer;">Dashboard Return</button>
+    </div>
+
+    <div id="latestIncident" class="incident-brief">
+        <strong>CURRENT THREAT:</strong> <span id="incidentType">No Active Spills</span> | 
+        <strong>LOCATION:</strong> <span id="incidentLoc">N/A</span>
+    </div>
+
+    <div class="grid">
+        <div class="agency-card fire">
+            <h3>Fire & Hazmat Dept.</h3>
+            <p><strong>Station 09:</strong> 1.2km away</p>
+            <p>Estimated Response: 4 mins</p>
+            <button class="btn-call btn-fire" onclick="triggerAlert('Fire Dept')">Dispatch Hazmat Team</button>
+        </div>
+
+        <div class="agency-card medical">
+            <h3>City Toxicology Hospital</h3>
+            <p><strong>ER Status:</strong> Ready for Admission</p>
+            <p>Specialty: Chemical Exposure / Burn Unit</p>
+            <button class="btn-call btn-medical" onclick="triggerAlert('Medical')">Notify Hospital ER</button>
+        </div>
+
+        <div class="agency-card police">
+            <h3>Metropolitan Police</h3>
+            <p><strong>Unit:</strong> Industrial Safety Division</p>
+            <p>Purpose: Perimeter Control / Evacuation</p>
+            <button class="btn-call btn-police" onclick="triggerAlert('Police')">Request Perimeter Lockdown</button>
+        </div>
+    </div>
+
+    <div class="agency-card" style="margin-top:20px;">
+        <h3>Fire Extinguisher & Suppressant Map</h3>
+        <p>Current System Pressure: <span style="color:var(--medical)">450 PSI (Normal)</span></p>
+        <div style="height:100px; background:#222; border:1px dashed #555; display:flex; align-items:center; justify-content:center;">
+            [Floor Plan View: Extinguishers highlighted in Sector B]
+        </div>
+    </div>
+
+    <script>
+        // Interconnection Logic: Check if there is an active spill in LocalStorage
+        const spills = JSON.parse(localStorage.getItem('spills') || '[]');
+        if(spills.length > 0) {
+            const latest = spills[spills.length - 1];
+            document.getElementById('incidentType').innerText = latest.chemical + " Spill";
+            document.getElementById('incidentLoc').innerText = "Sector " + latest.sector;
+            
+            // Highlight specific agency based on hazard
+            if(latest.chemical.toLowerCase().includes('gas')) {
+                document.querySelector('.medical').style.boxShadow = "0 0 20px var(--medical)";
+            }
+        }
+
+        function triggerAlert(agency) {
+            alert("SECURE CHANNEL OPENED: Calling " + agency + "...");
+            // Real world: This would hit an API to send a JSON payload to the station
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Logistics Hub | Sai Mithra Case Study</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #0a0a0c; 
+            color: #e2e2e2;
+            scroll-behavior: smooth;
+        }
+
+        .gold-text {
+            background: linear-gradient(to right, #c5a059, #f7e1ad);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(10,10,12,0) 0%, rgba(10,10,12,1) 100%);
+        }
+
+        .stat-border {
+            border-left: 1px solid rgba(197, 160, 89, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 px-6 py-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="mithra.html" class="glass-card px-6 py-3 rounded-full text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-black transition-all group">
+                <i class="fas fa-arrow-left mr-2 group-hover:-translate-x-1 transition-transform"></i> Back to Portfolio
+            </a>
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full border border-[#c5a059] flex items-center justify-center font-bold text-[10px]">SM</div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[80vh] flex items-end pb-20">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=2000" 
+                 class="w-full h-full object-cover opacity-40" alt="Project Background">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-5xl mx-auto px-6 w-full">
+            <span class="text-[#c5a059] text-xs uppercase tracking-[0.5em] mb-4 block">Case Study: Logistics & Supply Chain</span>
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tighter mb-8 leading-none">Global <br><span class="gold-text">Logistics</span> Hub.</h1>
+            
+            <div class="grid md:grid-cols-3 gap-12 mt-12 border-t border-white/10 pt-12">
+                <div>
+                    <h4 class="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Client</h4>
+                    <p class="font-light">Trans-Atlantic Freight Corp</p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Core Tech</h4>
+                    <p class="font-light">Zoho CRM, Creator, Analytics</p>
+                </div>
+                <div>
+                    <h4 class="text-[10px] uppercase tracking-widest text-gray-500 mb-2">Timeline</h4>
+                    <p class="font-light">14 Weeks Architecture</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-24 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid md:grid-cols-12 gap-16">
+                <div class="md:col-span-7 space-y-16">
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 italic">The Challenge</h2>
+                        <p class="text-gray-400 leading-relaxed text-lg font-light">
+                            Trans-Atlantic was struggling with fragmented data. Sales leads were in spreadsheets, while shipping manifests lived in a legacy SQL database. The lack of synchronization led to a 15% error rate in order fulfillment and frustrated global partners.
+                        </p>
+                    </div>
+                    
+                    <div>
+                        <h2 class="text-3xl font-bold mb-6 italic">The Architecture</h2>
+                        <p class="text-gray-400 leading-relaxed text-lg font-light mb-6">
+                            Sai Mithra engineered a centralized "Nerve Center" using Zoho CRM as the primary engine. We developed custom Deluge scripts to bridge the gap between their legacy systems and Zoho, creating a real-time data flow.
+                        </p>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4 items-center text-sm text-white/80">
+                                <span class="w-1.5 h-1.5 bg-[#c5a059] rounded-full"></span>
+                                Custom API Middleware for Legacy SQL
+                            </li>
+                            <li class="flex gap-4 items-center text-sm text-white/80">
+                                <span class="w-1.5 h-1.5 bg-[#c5a059] rounded-full"></span>
+                                Automated Manifest Generation in Zoho Creator
+                            </li>
+                            <li class="flex gap-4 items-center text-sm text-white/80">
+                                <span class="w-1.5 h-1.5 bg-[#c5a059] rounded-full"></span>
+                                Live Tracking Dashboard for End-Customers
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="md:col-span-5">
+                    <div class="glass-card rounded-3xl p-10 sticky top-32">
+                        <h3 class="text-xl font-bold mb-8">Impact Delivered</h3>
+                        <div class="space-y-10">
+                            <div class="stat-border pl-6">
+                                <h2 class="text-4xl font-extrabold gold-text">40%</h2>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500">Increase in Dispatch Speed</p>
+                            </div>
+                            <div class="stat-border pl-6">
+                                <h2 class="text-4xl font-extrabold gold-text">0.2%</h2>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500">Error Margin Post-Launch</p>
+                            </div>
+                            <div class="stat-border pl-6">
+                                <h2 class="text-4xl font-extrabold gold-text">$1.2M</h2>
+                                <p class="text-[10px] uppercase tracking-widest text-gray-500">Operational Savings Year 1</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-[#0d0d0f]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="rounded-3xl overflow-hidden glass-card p-4">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200" 
+                         class="rounded-2xl w-full grayscale hover:grayscale-0 transition-all duration-700" alt="Dashboard View">
+                    <p class="mt-4 text-center text-[10px] uppercase tracking-widest text-gray-500">Phase 1: Custom Zoho Analytics Dashboard</p>
+                </div>
+                <div class="rounded-3xl overflow-hidden glass-card p-4">
+                    <img src="https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&q=80&w=1200" 
+                         class="rounded-2xl w-full grayscale hover:grayscale-0 transition-all duration-700" alt="Workflow View">
+                    <p class="mt-4 text-center text-[10px] uppercase tracking-widest text-gray-500">Phase 2: Automated Workflow Logic</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-32 text-center">
+        <h2 class="text-4xl font-bold mb-8">Ready for a similar transformation?</h2>
+        <a href="sai.html" class="inline-block px-12 py-5 bg-[#c5a059] text-black font-black uppercase tracking-widest rounded-full hover:scale-105 transition-transform">
+            Let's Talk Architecture
+        </a>
+    </section>
+
+    <footer class="py-10 text-center text-gray-600 text-[10px] uppercase tracking-[0.5em] border-t border-white/5">
+        &copy; 2026 Sai Mithra Consulting 
+    </footer>
+
+</body>
+</html>

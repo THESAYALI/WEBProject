@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Spill Report</title>
+  <style>
+    body { font-family: Arial; background:#f0f4f7; }
+    nav { background:#007bff; padding:10px; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; }
+    .container { padding:20px; }
+    form { background:#fff; padding:20px; border-radius:8px; box-shadow:0 0 5px #aaa; }
+    input, textarea { width:100%; padding:10px; margin:10px 0; }
+    button { padding:10px; background:#007bff; color:#fff; border:none; border-radius:5px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="dashboard.html">Dashboard</a>
+    <a href="ppe.html">PPE Kit</a>
+    <a href="report.html">Spill Report</a>
+    <a href="qa.html">QA</a>
+    <a href="login.html">Logout</a>
+  </nav>
+  <div class="container">
+    <h2>Spill Report</h2>
+    <form action="qa.html">
+      <input type="text" placeholder="Location" required>
+      <input type="text" placeholder="Type of Spill" required>
+      <textarea placeholder="Description of Spill" required></textarea>
+      <button type="submit">Submit Report</button>
+    </form>
+  </div>
+</body>
+</html>

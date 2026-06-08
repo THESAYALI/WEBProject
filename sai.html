@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture | Sai Mithra Zoho Systems</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap');
+        
+        body { 
+            font-family: 'Outfit', sans-serif; 
+            background-color: #0a0a0c; 
+            color: #e2e2e2;
+        }
+
+        /* Blueprint Grid Effect */
+        .blueprint-bg {
+            background-color: #0a0a0c;
+            background-image: 
+                linear-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 160, 89, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+
+        .gold-border {
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .node-line {
+            width: 2px;
+            background: linear-gradient(to bottom, #c5a059, transparent);
+            height: 100px;
+            margin: 0 auto;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.01);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+        }
+
+        .glass-panel:hover {
+            border-color: #c5a059;
+            background: rgba(197, 160, 89, 0.02);
+        }
+    </style>
+</head>
+<body class="blueprint-bg">
+
+    <nav class="p-8">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <a href="mithra.html" class="text-xs uppercase tracking-[0.3em] flex items-center gap-4 group">
+                <span class="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:border-[#c5a059] transition">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+                Exit Architecture View
+            </a>
+            <div class="text-[#c5a059] font-bold tracking-tighter">SAI MITHRA / SYSTEMS</div>
+        </div>
+    </nav>
+
+    <section class="pt-10 pb-20 px-6 text-center">
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tighter">System <span class="text-[#c5a059]">Integrity.</span></h1>
+        <p class="text-gray-500 max-w-xl mx-auto uppercase text-[10px] tracking-[0.5em]">Engineering scalable foundations for the Zoho ecosystem</p>
+    </section>
+
+    <main class="max-w-4xl mx-auto px-6 pb-32">
+        
+        <div class="text-center mb-10">
+            <div class="glass-panel inline-block p-8 rounded-3xl w-full md:w-80">
+                <i class="fas fa-cloud-download-alt text-[#c5a059] text-2xl mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest text-sm mb-2">Data Ingestion</h3>
+                <p class="text-xs text-gray-500">APIs, Webhooks, and IoT streams consolidated into a single source.</p>
+            </div>
+            <div class="node-line"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 mb-10">
+            <div class="glass-panel p-8 rounded-3xl relative">
+                <div class="absolute -right-4 top-1/2 w-4 h-[1px] bg-[#c5a059] hidden md:block"></div>
+                <h3 class="font-bold text-[#c5a059] mb-4">Deluge Scripting</h3>
+                <p class="text-sm text-gray-400 font-light leading-relaxed">We write complex custom functions that handle cross-module automation. If a lead closes in CRM, an invoice is born in Books, and a project starts in Projects—instantly.</p>
+            </div>
+            <div class="glass-panel p-8 rounded-3xl">
+                <h3 class="font-bold text-[#c5a059] mb-4">Relational Architecture</h3>
+                <p class="text-sm text-gray-400 font-light leading-relaxed">Database normalization ensures your data is clean, searchable, and ready for high-level reporting without duplicate entries.</p>
+            </div>
+        </div>
+
+        <div class="node-line"></div>
+
+        <div class="text-center mt-10">
+            <div class="glass-panel inline-block p-10 rounded-full w-64 h-64 flex flex-col items-center justify-center border-[#c5a059]">
+                <i class="fas fa-chart-pie text-[#c5a059] text-3xl mb-4"></i>
+                <h3 class="font-bold uppercase tracking-widest text-sm mb-2">Intelligence</h3>
+                <p class="text-[10px] text-gray-500">Zoho Analytics BI Dashboards</p>
+            </div>
+        </div>
+
+        <section class="mt-32">
+            <h2 class="text-2xl font-bold mb-8 italic">Technical Specifications</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm border-t border-white/10">
+                    <tr class="border-b border-white/5">
+                        <td class="py-6 text-gray-500 uppercase tracking-widest text-[10px]">Security</td>
+                        <td class="py-6 font-light italic">AES-256 Encryption & OAuth 2.0 Protocols</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-6 text-gray-500 uppercase tracking-widest text-[10px]">Uptime</td>
+                        <td class="py-6 font-light italic">99.9% High-Availability Cloud Infrastructure</td>
+                    </tr>
+                    <tr class="border-b border-white/5">
+                        <td class="py-6 text-gray-500 uppercase tracking-widest text-[10px]">Methodology</td>
+                        <td class="py-6 font-light italic">Agile Blueprinting & Sprint-Based Deployment</td>
+                    </tr>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <footer class="py-20 text-center opacity-30 text-[10px] tracking-[1em] uppercase">
+        Sai Mithra Systems 2026
+    </footer>
+
+</body>
+</html>

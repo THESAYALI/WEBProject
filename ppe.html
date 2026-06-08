@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>S.T.O.P. | Incident Reporting</title>
+    <style>
+        :root { --primary: #CCFF00; --bg: #121212; --card: #1e1e1e; --danger: #ff3131; }
+        body { background: var(--bg); color: #fff; font-family: sans-serif; padding: 40px; }
+        .report-form { max-width: 600px; background: var(--card); padding: 30px; border-radius: 12px; border: 1px solid var(--danger); }
+        .ppe-alert { background: #000; border: 2px dashed var(--primary); padding: 15px; margin: 20px 0; border-radius: 8px; display: none; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #aaa; }
+        select, input, textarea { width: 100%; padding: 12px; margin-bottom: 20px; background: #222; border: 1px solid #444; color: #fff; box-sizing: border-box; }
+        .submit-btn { background: var(--danger); color: white; border: none; padding: 15px; width: 100%; font-weight: bold; cursor: pointer; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <a href="dashboard.html" style="color: var(--primary); text-decoration: none;">← Cancel & Go Back</a>
+    <h1>⚠️ Emergency Spill Reporting</h1>
+    
+    <div class="report-form">
+        <label>Select Chemical (Auto-fetches Hazard Data)</label>
+        <select id="chemSelect" onchange="fetchHazard()">
+            <option value="">-- Choose Chemical --</option>
+            <option value="Acid" data-ppe="Acid Suit, Goggles, PVC Boots" data-toxic="High">Sulfuric Acid</option>
+            <option value="Ammonia" data-ppe="Full Face Respirator, Chem-Gloves" data-toxic="Extreme (Gas)">Ammonia Gas</option>
+            <option value="Mercury" data-ppe="Vapor Mask, Nitrile Gloves" data-toxic="Neurotoxic">Mercury</option>
+        </select>
+
+        <div id="ppeBox" class="ppe-alert">
+            <h4 style="margin:0; color:var(--primary)">REQUIRED PPE KIT:</h4>
+            <p id="ppeText"></p>
+        </div>
+
+        <label>Location / Sector</label>
+        <input type="text" id="sector" placeholder="e.g. Loading Bay B">
+
+        <label>Spill Volume (Liters)</label>
+        <input type="number" id="vol">
+
+        <button class="submit-btn" onclick="submitReport()">BROADCAST INCIDENT</button>
+    </div>
+
+    <script>
+        function fetchHazard() {
+            const select = document.getElementById('chemSelect');
+            const ppe = select.options[select.selectedIndex].getAttribute('data-ppe');
+            if(ppe) {
+                document.getElementById('ppeBox').style.display = 'block';
+                document.getElementById('ppeText').innerText = ppe;
+            }
+        }
+
+        function submitReport() {
+            const spill = {
+                chemical: document.getElementById('chemSelect').value,
+                sector: document.getElementById('sector').value,
+                time: new Date().toLocaleTimeString(),
+                reportedBy: localStorage.getItem('activeUser')
+            };
+
+            // INTERCONNECTION LOGIC: Save to local storage for Dashboard to read
+            let currentSpills = JSON.parse(localStorage.getItem('spills') || '[]');
+            currentSpills.push(spill);
+            localStorage.setItem('spills', JSON.stringify(currentSpills));
+
+            alert("EMERGENCY BROADCAST SENT TO ALL MANAGERS");
+            window.location.href = 'dashboard.html';
+        }
+    </script>
+</body>
+</html>
